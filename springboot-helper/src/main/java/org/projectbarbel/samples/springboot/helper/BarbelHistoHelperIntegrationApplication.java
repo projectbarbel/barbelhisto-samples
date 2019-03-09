@@ -55,10 +55,16 @@ public class BarbelHistoHelperIntegrationApplication extends MongoConfigurationS
 	    service.saveCustomer(customer, LocalDate.now().plusDays(10), EffectivePeriod.INFINITE);
 	    service.saveCustomer(customer, LocalDate.now().plusDays(20), EffectivePeriod.INFINITE);
 	    
-	    // query the state of the journal
+        // validate the state of the journal
 	    Assert.isTrue(repository.findByClientIdAndBitemporalStampRecordTimeState("1234", BitemporalObjectState.ACTIVE).size() == 3, "must contain 3 active records");
 	    Assert.isTrue(repository.findByClientIdAndBitemporalStampRecordTimeState("1234", BitemporalObjectState.INACTIVE).size() == 2, "must contain 2 inactive records");
 
+	    service.saveCustomer(customer, LocalDate.now().minusDays(1), EffectivePeriod.INFINITE);
+	    
+	    // validate the state of the journal
+        Assert.isTrue(repository.findByClientIdAndBitemporalStampRecordTimeState("1234", BitemporalObjectState.ACTIVE).size() == 1, "must contain 1 active records");
+        Assert.isTrue(repository.findByClientIdAndBitemporalStampRecordTimeState("1234", BitemporalObjectState.INACTIVE).size() == 5, "must contain 5 inactive records");
+	    
 	    System.out.println(repository.findAll().toString());
     }
 }
