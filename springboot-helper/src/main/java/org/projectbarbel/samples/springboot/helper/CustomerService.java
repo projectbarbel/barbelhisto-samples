@@ -19,23 +19,23 @@ public class CustomerService {
 
     public void saveCustomer(Customer customer, LocalDate from, LocalDate until) {
 
-        // create BarbelHisto helper instance
+        // (1) create BarbelHisto helper instance
         BarbelHisto<Customer> bitemporalHelper = BarbelHistoBuilder.barbel().withMode(BarbelMode.BITEMPORAL).build();
 
-        // load active records of the current Customer journal
+        // (2) load active records of the current Customer journal
         bitemporalHelper.load(customerRepository.findByClientIdAndBitemporalStampRecordTimeState(customer.getClientId(),
                 BitemporalObjectState.ACTIVE));
 
-        // make a bitemporal update
+        // (3) make a bitemporal update
         BitemporalUpdate<Customer> update = bitemporalHelper.save(customer, from, until);
 
-        // replace inactivated versions
+        // (4) replace inactivated versions
         update.getInactivations().stream().forEach(i -> customerRepository.save(i));
 
-        // prepare inserts: clear IDs of new version records
+        // (5) prepare inserts: clear IDs of new version records
         update.getInserts().stream().forEach(d -> d.setId(null));
 
-        // perform inserts of new version data
+        // (5) perform inserts of new version data
         customerRepository.insert(update.getInserts());
 
     }
