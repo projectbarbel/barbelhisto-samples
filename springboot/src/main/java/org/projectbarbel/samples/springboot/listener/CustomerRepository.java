@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-package org.projectbarbel.samples.springboot.data.mongo;
+package org.projectbarbel.samples.springboot.listener;
 
 import java.util.List;
 
 import org.projectbarbel.histo.model.Bitemporal;
 import org.projectbarbel.histo.model.BitemporalObjectState;
+import org.projectbarbel.samples.springboot.model.Customer;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface CustomerRepository extends MongoRepository<Customer, String> {

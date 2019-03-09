@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.projectbarbel.samples.springboot.data.mongo;
+package org.projectbarbel.samples.springboot.model;
 
 import org.projectbarbel.histo.DocumentId;
 import org.projectbarbel.histo.model.Bitemporal;

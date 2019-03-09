@@ -1,4 +1,4 @@
-package org.projectbarbel.samples.springboot.data.mongo;
+package org.projectbarbel.samples.springboot.helper;
 
 import static org.junit.Assert.*;
 
@@ -6,10 +6,11 @@ import java.net.ConnectException;
 
 import org.junit.Rule;
 import org.junit.Test;
+import org.projectbarbel.samples.springboot.helper.BarbelHistoHelperIntegrationApplication;
 import org.springframework.boot.test.rule.OutputCapture;
 import org.springframework.core.NestedCheckedException;
 
-public class SampleMongoBitemporalApplicationTest {
+public class BarbelHistoHelperIntegrationApplicationTest {
 
     @Rule
     public OutputCapture outputCapture = new OutputCapture();
@@ -17,7 +18,7 @@ public class SampleMongoBitemporalApplicationTest {
     @Test
     public void testDefaultSettings() throws Exception {
         try {
-            SampleMongoBitemporalApplication.main(new String[0]);
+            BarbelHistoHelperIntegrationApplication.main(new String[0]);
         } catch (IllegalStateException ex) {
             if (serverNotRunning(ex)) {
                 return;

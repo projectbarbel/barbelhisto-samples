@@ -1,4 +1,4 @@
-package org.projectbarbel.samples.springboot.data.mongo;
+package org.projectbarbel.samples.springboot.support;
 
 import java.time.ZonedDateTime;
 import java.util.Date;
