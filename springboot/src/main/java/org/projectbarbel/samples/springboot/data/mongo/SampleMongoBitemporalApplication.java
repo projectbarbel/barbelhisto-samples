@@ -72,5 +72,6 @@ public class SampleMongoBitemporalApplication extends MongoConfigurationSupport 
 	    Assert.isTrue(repository.findByClientIdAndBitemporalStampRecordTimeState("1234", BitemporalObjectState.ACTIVE).size() == 3, "must contain 3 active records");
 	    Assert.isTrue(repository.findByClientIdAndBitemporalStampRecordTimeState("1234", BitemporalObjectState.INACTIVE).size() == 2, "must contain 2 inactive records");
 
+	    System.out.println(repository.findAll().toString());
     }
 }
