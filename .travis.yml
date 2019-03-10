@@ -1,4 +1,4 @@
 language: java
 script:
-- cd springboot-helper && mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-- cd ../springboot-listener && mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+- cd springboot-helper && mvn install -Dmaven.javadoc.skip=true -B -V
+- cd ../springboot-listener && mvn install -Dmaven.javadoc.skip=true -B -V
