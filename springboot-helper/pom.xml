@@ -37,7 +37,7 @@
 		<dependency>
 			<groupId>org.projectbarbel</groupId>
 			<artifactId>barbelhisto</artifactId>
-			<version>1.7.0</version>
+			<version>1.7.2-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>

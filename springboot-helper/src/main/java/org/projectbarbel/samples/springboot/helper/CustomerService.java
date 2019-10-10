@@ -1,6 +1,6 @@
 package org.projectbarbel.samples.springboot.helper;
 
-import java.time.LocalDate;
+import java.time.ZonedDateTime;
 
 import org.projectbarbel.histo.BarbelHisto;
 import org.projectbarbel.histo.BarbelHistoBuilder;
@@ -17,7 +17,7 @@ public class CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
-    public void saveCustomer(Customer customer, LocalDate from, LocalDate until) {
+    public void saveCustomer(Customer customer, ZonedDateTime from, ZonedDateTime until) {
 
         // (1) create BarbelHisto helper instance
         BarbelHisto<Customer> bitemporalHelper = BarbelHistoBuilder.barbel().withMode(BarbelMode.BITEMPORAL).build();

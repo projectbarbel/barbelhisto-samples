@@ -1,6 +1,6 @@
 package org.projectbarbel.samples.springboot.helper;
 
-import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,15 +51,15 @@ public class BarbelHistoHelperIntegrationApplication extends MongoConfigurationS
 	    Customer customer = new Customer("1234", "Alice", "Smith", "Some Street 10", "Houston", "77001");
 	    
         // save a couple of customers
-	    service.saveCustomer(customer, LocalDate.now(), EffectivePeriod.INFINITE);
-	    service.saveCustomer(customer, LocalDate.now().plusDays(10), EffectivePeriod.INFINITE);
-	    service.saveCustomer(customer, LocalDate.now().plusDays(20), EffectivePeriod.INFINITE);
+	    service.saveCustomer(customer, ZonedDateTime.now(), EffectivePeriod.INFINITE);
+	    service.saveCustomer(customer, ZonedDateTime.now().plusDays(10), EffectivePeriod.INFINITE);
+	    service.saveCustomer(customer, ZonedDateTime.now().plusDays(20), EffectivePeriod.INFINITE);
 	    
         // validate the state of the journal
 	    Assert.isTrue(repository.findByClientIdAndBitemporalStampRecordTimeState("1234", BitemporalObjectState.ACTIVE).size() == 3, "must contain 3 active records");
 	    Assert.isTrue(repository.findByClientIdAndBitemporalStampRecordTimeState("1234", BitemporalObjectState.INACTIVE).size() == 2, "must contain 2 inactive records");
 
-	    service.saveCustomer(customer, LocalDate.now().minusDays(1), EffectivePeriod.INFINITE);
+	    service.saveCustomer(customer, ZonedDateTime.now().minusDays(1), EffectivePeriod.INFINITE);
 	    
 	    // validate the state of the journal
         Assert.isTrue(repository.findByClientIdAndBitemporalStampRecordTimeState("1234", BitemporalObjectState.ACTIVE).size() == 1, "must contain 1 active records");

@@ -1,6 +1,6 @@
 package org.projectbarbel.samples.springboot.listener;
 
-import java.time.LocalDate;
+import java.time.ZonedDateTime;
 
 import org.projectbarbel.histo.BarbelHisto;
 import org.projectbarbel.samples.springboot.model.Customer;
@@ -13,7 +13,7 @@ public class CustomerService {
     @Autowired
     private BarbelHisto<Customer> barbel;
 
-    public void saveCustomer(Customer customer, LocalDate from, LocalDate until) {
+    public void saveCustomer(Customer customer, ZonedDateTime from, ZonedDateTime until) {
 
         barbel.save(customer, from, until);
 
